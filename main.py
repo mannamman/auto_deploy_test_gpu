@@ -9,6 +9,7 @@ import torch
 import requests
 from PIL import Image
 from flask import Flask, request
+import requests
 
 app = Flask(__name__)
 
