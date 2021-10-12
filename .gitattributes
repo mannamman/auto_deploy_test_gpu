@@ -1,0 +1,2 @@
+models/eccv16.pth filter=lfs diff=lfs merge=lfs -text
+models/siggraph17.pth filter=lfs diff=lfs merge=lfs -text

@@ -1,4 +1,6 @@
 FROM nvidia/cuda:9.0-base-ubuntu16.04
+EXPOSE 80
+ENV LC_ALL=C.UTF-8
 RUN apt-get update \
      && apt-get install -y \
         libgl1-mesa-glx \
@@ -8,13 +10,12 @@ RUN apt-get update \
         libxrender1 \
         libxext6 \
         software-properties-common
+
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && \
-    apt-get install -y python3.7 python3-pip
-RUN python3.7 -m pip install --upgrade pip
-RUN python3.7 -m pip install Flask && python3.7 -m pip install torch
+    apt-get install -y python3.7 python3-pip && apt-get clean all && rm -r /var/lib/apt/lists/*
 WORKDIR /app
-COPY main.py /app
-EXPOSE 80
+COPY . /app/
+RUN python3.7 -m pip install -r requirements.txt
 
 CMD [ "python3.7", "main.py"]
