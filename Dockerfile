@@ -18,7 +18,5 @@ WORKDIR /app
 COPY . /app/
 RUN python3.7 -m pip install --upgrade pip
 RUN python3.7 -m pip install -r requirements.txt
-# RUN python3.7 -m pip install --upgrade pip
-# RUN python3.7 -m pip install numpy==1.18.5 scikit-image==0.18.3 matplotlib==3.4.3 Pillow==7.2.0 opencv-python==4.5.3.56 Flask==2.0.2 torch==1.7.0 requests==2.26.0
 
 CMD [ "python3.7", "main.py"]
