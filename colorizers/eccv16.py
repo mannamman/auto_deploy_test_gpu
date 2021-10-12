@@ -100,7 +100,8 @@ class ECCVGenerator(BaseColor):
 def eccv16(pretrained=True):
     model = ECCVGenerator()
     path = "/app/models/eccv16.pth"
+    device = torch.device(f'cuda:0' if torch.cuda.is_available() else 'cpu')
     if(pretrained):
         import torch.utils.model_zoo as model_zoo
-        model.load_state_dict(torch.load(path, map_location=torch.device('cuda:0')))
+        model.load_state_dict(torch.load(path, map_location=device))
     return model
