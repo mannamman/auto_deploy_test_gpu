@@ -164,6 +164,6 @@ def siggraph17(pretrained=True):
     path = "/app/models/siggraph17.pth"
     if(pretrained):
         import torch.utils.model_zoo as model_zoo
-        model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
+        model.load_state_dict(torch.load(path, map_location=torch.device('cuda:0')))
     return model
 
