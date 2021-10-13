@@ -55,6 +55,7 @@ def prediction(img, model):
     # default size to process images is 256x256
     # grab L channel in both original ("orig") and resized ("rs") resolutions
     (tens_l_orig, tens_l_rs) = preprocess_img(img, HW=(256,256))
+    tens_l_rs = tens_l_rs.cuda()
 
     # colorizer outputs 256x256 ab map
     # resize and concatenate to original L channel
