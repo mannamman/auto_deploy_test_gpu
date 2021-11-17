@@ -63,7 +63,7 @@ def prediction(img, model):
     return result
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=["POST"])
 def index():
     try:
         ## 메시지 파싱 ##
@@ -99,7 +99,10 @@ def index():
         error = pretty_trackback(error)
         return({"error":error},400)
     
-    
+
+@app.route('/', methods=["GET"])
+def index():
+    return("pong", 200)
     
 
 if(__name__=='__main__'):
