@@ -10,6 +10,7 @@ import requests
 from PIL import Image
 from flask import Flask, request
 import requests
+import torch
 
 app = Flask(__name__)
 
@@ -102,8 +103,16 @@ def index():
 
 @app.route('/', methods=["GET"])
 def index():
-    return("pong", 200)
-    
+    avaliable = torch.cuda.is_available()
+    if avaliable:
+        d_name = ""
+        d_count = torch.cuda.device_count()
+        for d in range(d_count):
+            d_name += f"{torch.cuda.get_device_name(d)}, "
+        return_string = f"available : {avaliable}, d_name : {d_name}d_count : {d_count}"
+    else:
+        return_string = f"available : {avaliable}"
+    return(return_string, 200)
 
 if(__name__=='__main__'):
     app.run(host="0.0.0.0", port=80)
