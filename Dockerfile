@@ -15,6 +15,6 @@ RUN python3.7 -m pip install --upgrade pip
 RUN python3.7 -m pip install Flask && python3.7 -m pip install torch
 WORKDIR /app
 COPY main.py /app
-EXPOSE 80
+EXPOSE 8090
 
 CMD [ "python3.7", "main.py"]
